@@ -11,8 +11,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.usertype.UserCollectionType;
-
 import com.ztps.birthday.core.constant.Constant;
 import com.ztps.birthday.glxt.user.entity.User;
 
@@ -35,16 +33,11 @@ public class LoginFilter implements Filter {
 			//非登录请求
 			if (request.getSession().getAttribute(Constant.USER) != null) {
 				
-				if (uri.contains("/glxt/")) {
-					User user = (User) request.getSession().getAttribute(Constant.USER);
-					
-				} else {
-					//非访问客户管理系统，则直接放行
-					chain.doFilter(request, response);
-				}
+				chain.doFilter(request, response);
+				
 			} else {
 				//没有登录，跳转到登录页面
-				response.sendRedirect(request.getContextPath() + "");
+				response.sendRedirect(request.getContextPath() + "/glxt/user_toLoginUI.action");
 			}
 		} else {
 			chain.doFilter(request, response);

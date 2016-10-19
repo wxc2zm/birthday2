@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.ztps.birthday.glxt.user.entity.User" table="user">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex" />
+		</id>	
+		<property name="account" type="java.lang.String">
+			<column name="account" length="50" not-null="true" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" length="50" not-null="true" />
+		</property>
+		<property name="power" type="java.lang.String">
+			<column name="power" length="1" />
+		</property>
+		<property name="state" type="java.lang.String">
+			<column name="state" length="1" />
+		</property>
+		<one-to-one name="customer" class="com.ztps.birthday.glxt.customer.entity.Customer" cascade="delete"/>
+	</class>
+</hibernate-mapping>

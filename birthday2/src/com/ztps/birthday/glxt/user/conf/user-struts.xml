@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="user-action" namespace="/glxt" extends="struts-default">
+		<action name="user_*" class="com.ztps.birthday.glxt.user.action.UserAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/glxt/user/{1}.jsp</result>
+			<result name="loginUI">/WEB-INF/jsp/glxt/user/loginUI.jsp</result>
+			<result name="admin" type="redirectAction" >
+				<param name="actionName">customer_listUI</param>
+			</result>
+			<result name="client" type="redirectAction" >
+			    <param name="actionName">customer_addUI</param>
+			</result>
+		</action>
+	</package>
+
+</struts>
+	
